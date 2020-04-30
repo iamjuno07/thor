@@ -75,13 +75,14 @@ public class SignUpServiceImpl implements SignUpService {
 			}
 			String password = generatePassword(8);
 			System.out.println("Generated Password: " + password);
+			String AESEncrypt = AESSecurity.encrypt(password, "password");
 			System.out.println("Validate UserName");
 			if (this.dao.validateUserName(username)) {
 				System.out.println("Validate Email");
 				if (this.dao.validateEmail(email)) {
 					System.out.println("Saving UserName");
 					SignUpEntity entity = new SignUpEntity();
-					entity.setPassword(password);
+					entity.setPassword(AESEncrypt);
 					entity.setLoginCount(0);
 					BeanUtils.copyProperties(dto, entity);
 					this.dao.saveUser(entity);
@@ -100,7 +101,7 @@ public class SignUpServiceImpl implements SignUpService {
 		return map;
 	}
 
-	public String generatePassword(int len) {
+	public static String generatePassword(int len) {
 
 		System.out.println("invoked generatePassword() method");
 		StringBuilder sb = new StringBuilder(len);

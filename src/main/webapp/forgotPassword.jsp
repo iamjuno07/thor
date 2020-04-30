@@ -39,22 +39,16 @@
 	<div class="container">
 		<div class="row text-white">
 			<div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto  form p-4">
-				<h3 style="color: #2DE1FC;">${returnLoginMessage}</h3>
-				<h1 class="display-4 py-2" style="color: black; font-weight: bold;">Please
-					Login!!!</h1>
+				<h3 style="color: #2DE1FC;">${returnForgotMessage}</h3>
+				<h1 class="display-4 py-2" style="color: black; font-weight: bold;">Forgot
+					Password!!!</h1>
 				<div class="px-2">
-					<form action="login.do" method="post">
+					<form action="forgotPassword.do" method="post">
 						<div class="form-group">
 							<label class="sr-only">Email</label> <input type="text"
 								name="email" class="form-control" placeholder=" Enter Email">
 						</div>
-						<div class="form-group">
-							<label class="sr-only">Password</label> <input type="password"
-								name="password" class="form-control"
-								placeholder="Enter Password">
-						</div>
-						<button type="submit" class="btn btn-primary btn-sm">Login</button>
-						<a href="forgotPassword.jsp" class="btn btn-primary btn-sm">forgotPassword</a>
+						<button type="submit" class="btn btn-primary btn-sm">Submit</button>
 					</form>
 				</div>
 			</div>

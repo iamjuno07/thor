@@ -46,7 +46,8 @@ public class LoginServiceImpl implements LoginService {
 				return map;
 			} else {
 				System.out.println("Validating LoginCounts less than 3");
-				if ((entity.getPassword()).equals(password)) {
+				String AESDecrypt = AESSecurity.decrypt(entity.getPassword(), "password");
+				if (AESDecrypt.equals(AESDecrypt)) {
 					System.out.println("Password matched");
 					this.dao.updateLoginCount(email, 0);
 					map.put("Success", "Login Successfull");
