@@ -2,6 +2,7 @@ package com.xworkz.myfirstproject.dao;
 
 import java.util.Objects;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,6 +17,8 @@ import com.xworkz.myfirstproject.entity.SignUpEntity;
 @Component
 @Qualifier("SignUpDAO")
 public class SignUpDAOImpl implements SignUpDAO {
+
+	public static final Logger logger = Logger.getLogger(SignUpDAOImpl.class);
 
 	private SessionFactory factory;
 
@@ -50,6 +53,7 @@ public class SignUpDAOImpl implements SignUpDAO {
 	@Override
 	public boolean validateEmail(String email) {
 		System.out.println("invoked validateUserName inside SignUpDAOImpl");
+		logger.warn("invoked validateUserName inside SignUpDAOImpl");
 		Session session = null;
 		SignUpEntity entity = null;
 		try {
@@ -72,7 +76,8 @@ public class SignUpDAOImpl implements SignUpDAO {
 
 	@Override
 	public boolean saveUser(SignUpEntity entity) {
-		System.out.println("invoked saveUser inside SignUpDAOImpl");
+		// System.out.println("invoked saveUser inside SignUpDAOImpl");
+		logger.warn("invoked saveUser inside SignUpDAOImpl");
 		Session session = null;
 		try {
 			session = factory.openSession();

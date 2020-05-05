@@ -1,5 +1,6 @@
 package com.xworkz.myfirstproject.dao;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -14,6 +15,8 @@ import com.xworkz.myfirstproject.entity.SignUpEntity;
 @Qualifier("DAOImpl")
 public class LoginDAOImpl implements LoginDAO {
 
+	public static final Logger logger = Logger.getLogger(LoginDAOImpl.class);
+
 	private SessionFactory factory;
 
 	@Autowired
@@ -24,6 +27,7 @@ public class LoginDAOImpl implements LoginDAO {
 	@Override
 	public int validateLoginEmail(String email) {
 		System.out.println("invoked validateEmail() inside LoginDAOImpl");
+		logger.warn("invoked validateEmail() inside LoginDAOImpl");
 		Session session = null;
 		int count = 0;
 		try {
@@ -44,7 +48,8 @@ public class LoginDAOImpl implements LoginDAO {
 
 	@Override
 	public SignUpEntity getUserData(String email) {
-		System.out.println("Created" + this.getClass().getSimpleName());
+		// System.out.println("Created" + this.getClass().getSimpleName());
+		logger.warn("Created" + this.getClass().getSimpleName());
 		Session session = null;
 		SignUpEntity entity = null;
 		try {
@@ -66,6 +71,7 @@ public class LoginDAOImpl implements LoginDAO {
 	@Override
 	public boolean updateLoginCount(String email, int value) {
 		System.out.println("invoke updateLoginCount() inside LoginDAOImpl");
+		logger.warn("invoke updateLoginCount() inside LoginDAOImpl");
 		Session session = null;
 		SignUpEntity entity = null;
 		try {

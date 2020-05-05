@@ -2,6 +2,7 @@ package com.xworkz.myfirstproject.controller;
 
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,8 @@ import com.xworkz.myfirstproject.service.ForgotPasswordService;
 @RequestMapping("/")
 public class ForgotPasswordController {
 
+	public static final Logger logger = Logger.getLogger(ForgotPasswordController.class);
+
 	private ForgotPasswordService service;
 
 	public ForgotPasswordController() {
@@ -29,8 +32,10 @@ public class ForgotPasswordController {
 
 	@RequestMapping("/forgotPassword.do")
 	public String PasswordUpdate(@RequestParam String email, Model model) {
-		System.out.println("invoked forgotPassword()");
-		System.out.println("email enterred:" + email);
+		logger.warn("invoked forgotPassword()");
+		// System.out.println("invoked forgotPassword()");
+		// System.out.println("email enterred:" + email);
+		logger.warn("email enterred:" + email);
 		Map<String, String> message = this.service.validateAndUpdate(email);
 		model.addAttribute("returnForgotMessage", message);
 		return "forgotPassword";
